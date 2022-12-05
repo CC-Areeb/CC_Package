@@ -28,9 +28,6 @@ class SmsCommand extends Command
      */
     public function handle()
     {
-        dd(
-            __DIR__.'/../../resources/views/smsWelcome.blade.php'
-        );
         $this->AddSmsViews();
         $this->AddSmsRoute();
         $this->AddSmsController();
