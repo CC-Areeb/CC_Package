@@ -1,5 +1,5 @@
 {
-    "name": "cooperativecomputing/mailingandsmstemplate",
+    "name": "cooperativecomputing/mailing-and-sms-template",
     "type": "package",
     "description": "A basic template for emailing and sms service",
     "license": "MIT",
