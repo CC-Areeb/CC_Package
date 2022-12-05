@@ -27,9 +27,6 @@ class EmailCommand extends Command
      */
     public function handle()
     {
-        dd(
-            __DIR__.'/../../resources/views/emailIndex.blade.php'
-        );
         $this->AddEmailViews();
         $this->AddEmailRoute();
         $this->AddEmailController();
