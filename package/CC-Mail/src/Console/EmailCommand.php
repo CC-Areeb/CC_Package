@@ -58,7 +58,7 @@ class EmailCommand extends Command
     public function AddEmailViews()
     {
         (new Filesystem)->ensureDirectoryExists(resource_path('views'));
-        copy(__DIR__.'/../../resources/views/emailWelcome.blade.php', resource_path('views/email-welcome.blade.php'));
+        copy(__DIR__.'/../../resources/views/email-welcome.blade.php', resource_path('views/email-welcome.blade.php'));
         copy(__DIR__.'/../../resources/views/email-index.blade.php', resource_path('views/email-index.blade.php'));
     }
 }
