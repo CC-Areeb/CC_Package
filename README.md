@@ -7,7 +7,7 @@ A basic template and implementation of the Laravel mailing and sms services.
 
 ### Installation command using composer
 ```
-composer require cooperativecomputing/package
+composer require cooperativecomputing/mailingtemplate
 ```
 
 The environment variables are provided in a text file called **keys.txt** 
