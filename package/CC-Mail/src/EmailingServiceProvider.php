@@ -1,8 +1,9 @@
 <?php
 
-namespace CooperativeComputing;
+namespace CooperativeComputing\Services;
 
 use Illuminate\Support\ServiceProvider;
+use CooperativeComputing\Console;
 
 class EmailingServiceProvider extends ServiceProvider
 {
@@ -14,8 +15,10 @@ class EmailingServiceProvider extends ServiceProvider
             __DIR__.'/../config/email.php' => config_path('email.php'),
         ], 'CC-Emails');
 
-        $this->commands([
-            Console\EmailCommand::class,
-        ]);
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Console\EmailCommand::class
+            ]);
+        }
     }
 }

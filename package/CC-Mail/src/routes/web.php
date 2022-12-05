@@ -1,8 +1,8 @@
 <?php
 
-namespace CooperativeComputing;
+namespace CooperativeComputing\Routes;
 
-use CooperativeComputing\Http\Controllers\EmailController;
+use CooperativeComputing\Controllers\EmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('email')->group(function () {

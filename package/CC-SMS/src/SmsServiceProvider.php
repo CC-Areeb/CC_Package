@@ -1,10 +1,11 @@
 <?php
 
-namespace CooperativeComputingSMS;
+namespace CooperativeComputingSMS\Services;
 
-use Closure;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use CooperativeComputingSMS\Console;
+
+
 
 class SmsServiceProvider extends ServiceProvider
 {
@@ -15,9 +16,10 @@ class SmsServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/sms.php' => config_path('sms.php'),
         ], 'CC-SMS');
-
-        $this->commands([
-            Console\SmsCommand::class,
-        ]);
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Console\SmsCommand::class,
+            ]);
+        }
     }
 }

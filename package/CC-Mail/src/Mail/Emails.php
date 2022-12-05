@@ -21,7 +21,6 @@ class Emails extends Mailable implements ShouldQueue
 
     public function __construct($validator)
     {
-        // dd(base_path('README.md'));  
         $this->validator = $validator;
     }
 
@@ -33,10 +32,10 @@ class Emails extends Mailable implements ShouldQueue
 
     public function build()
     {
-        return $this->from($this->validator['sender'])
-                    ->subject($this->validator['subject'])
-                    ->to($this->validator['to'])
-                    ->attach(base_path('README.md'))
-                    ->markdown('cc-email::emailWelcome');
+        $this->from($this->validator['sender'])
+            ->subject($this->validator['subject'])
+            ->to($this->validator['to'])
+            ->markdown('cc-email::emailWelcome');
+        return $this;
     }
 }

@@ -1,5 +1,6 @@
 <?php
-namespace CooperativeComputingSMS\Http\Controllers;
+
+namespace CooperativeComputingSMS\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

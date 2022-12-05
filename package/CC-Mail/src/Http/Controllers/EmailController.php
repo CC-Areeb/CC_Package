@@ -1,6 +1,6 @@
 <?php
 
-namespace CooperativeComputing\Http\Controllers;
+namespace CooperativeComputing\Controllers;
 
 use App\Http\Controllers\Controller;
 use CooperativeComputing\Mail\Emails as MailEmails;

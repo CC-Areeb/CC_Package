@@ -5,29 +5,24 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5|^8.0",
-        "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^9.19",
-        "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7",
         "twilio/sdk": "^6.43"
-    },
-    "require-dev": {
-        "fakerphp/faker": "^1.9.1",
-        "laravel/pint": "^1.0",
-        "laravel/sail": "^1.0.1",
-        "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
     },
     "autoload": {
         "psr-4": {
-            "CooperativeComputing\\": "app/Http/Controllers/",
-            "CooperativeComputing\\Mail\\": "app/Mail/",
-            "CooperativeComputingSMS\\": "app/Http/Controllers/",
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "CooperativeComputing\\": "package/CC-Mail/",
+            "CooperativeComputing\\Console\\": "package/CC-Mail/src/Console/",
+            "CooperativeComputing\\Services\\": "package/CC-Mail/src/",
+            "CooperativeComputing\\Routes\\": "package/CC-Mail/src/routes/",
+            "CooperativeComputing\\Controllers\\": "package/CC-Mail/src/Http/Controllers/",
+            "CooperativeComputing\\Mail\\": "package/CC-Mail/src/Mail/",
+            "CooperativeComputingSMS\\": "package/CC-SMS/",
+            "CooperativeComputingSMS\\Console\\": "package/CC-SMS/src/Console/",
+            "CooperativeComputingSMS\\Services\\": "package/CC-SMS/src/",
+            "CooperativeComputingSMS\\Routes\\": "package/CC-SMS/src/routes/",
+            "CooperativeComputingSMS\\Controllers\\": "package/CC-SMS/src/Http/Controllers/"
         }
     },
     "autoload-dev": {

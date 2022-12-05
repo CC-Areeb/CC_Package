@@ -28,17 +28,30 @@ class SmsCommand extends Command
      */
     public function handle()
     {
-        // Controllers
+        $this->AddSmsRoute();
+        $this->AddSmsViews();
+        $this->AddSmsController();
+    }
+
+    // Routes
+    public function AddSmsRoute()
+    {
+        (new Filesystem)->ensureDirectoryExists(base_path('routes'));
+        copy(__DIR__.'/../routes/web.php', base_path('routes/sms.php'));
+    }
+
+    // Controllers
+    public function AddSmsController()
+    {
         (new Filesystem)->ensureDirectoryExists(app_path('Http/Controllers'));
         copy(__DIR__.'/../Http/Controllers/SMSController.php', app_path('Http/Controllers/SMSController.php'));
+    }
 
-        // Views
+    // Views
+    public function AddSmsViews()
+    {
         (new Filesystem)->ensureDirectoryExists(resource_path('views'));
         copy(__DIR__.'/../../resources/views/smsWelcome.blade.php', resource_path('views/sms-welcome.blade.php'));
         copy(__DIR__.'/../../resources/views/smsIndex.blade.php', resource_path('views/sms-index.blade.php'));
-
-        // Routes
-        (new Filesystem)->ensureDirectoryExists(base_path('routes'));
-        copy(__DIR__.'/../routes/web.php', base_path('routes/sms.php'));
     }
 }

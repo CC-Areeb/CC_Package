@@ -155,7 +155,7 @@ return [
     */
 
     'providers' => [
-
+        
         /*
          * Laravel Framework Service Providers...
          */
@@ -185,8 +185,8 @@ return [
         /*
          * Package Service Providers...
          */
-        CooperativeComputing\EmailingServiceProvider::class,
-        CooperativeComputingSMS\SmsServiceProvider::class,
+        CooperativeComputing\Services\EmailingServiceProvider::class,
+        CooperativeComputingSMS\Services\SmsServiceProvider::class,
         /*
          * Application Service Providers...
          */

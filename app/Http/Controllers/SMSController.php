@@ -1,30 +1,34 @@
 <?php
+namespace CooperativeComputingSMS\Http\Controllers;
 
-namespace CooperativeComputingSMS;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Twilio\Exceptions\TwilioException;
+use Twilio\Rest\Client;
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\ServiceProvider;
-
-class SmsServiceProvider extends ServiceProvider
+class SMSController extends Controller
 {
-    public function boot()
+    public function SMSindex()
     {
-        dd(
-            copy(__DIR__.'/SmsServiceProvider.php', app_path('Http/Controllers/SMSController.php'))
-        );
-        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
-        $this->loadViewsFrom(__DIR__ . '/../resources/views/', 'cc-sms');
-        $this->publishes([
-            __DIR__.'/../config/sms.php' => config_path('sms.php'),
-        ], 'CC-SMS');
+        return view('cc-sms::smsIndex');
+    }
 
-        Route::prefix('sms')->group(function () {
-            Route::get('/', [SMSController::class, 'SMSindex'])->name('SMSindex');
-            Route::post('/send', [SMSController::class, 'sendSMS'])->name('sendSMS');
-        });
-
-        $this->commands([
-            Console\SmsCommand::class,
-        ]);
+    public function sendSMS(Request $request)
+    {
+        try {
+            $sender = env('TWILIO_SENDER');
+            $sid = env('TWILIO_ACCOUNT_SID');
+            $authToken = env('TWILIO_AUTH_TOKEN');
+            $twilio = new Client($sid, $authToken);
+            $twilio->messages->create($request->sms_receiver, [
+                    "body" => $request->sms_message,
+                    "from" => $sender,
+                    "mediaUrl" => ["https://demo.twilio.com/owl.png"]
+                ]
+            );
+            return view('cc-sms::smsWelcome');
+        }catch (TwilioException $e) {
+            return 'Oops, SMS was not sent.';
+        }
     }
 }
