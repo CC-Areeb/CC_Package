@@ -23,7 +23,7 @@ Add the service provider
 */
 
 CooperativeComputing\Services\EmailingServiceProvider::class,
-CooperativeComputing\Services\SmsServiceProvider::class,
+CooperativeComputingSMS\Services\SmsServiceProvider::class,
 ```
 ## Publish the SMS and Maling services
 ```
