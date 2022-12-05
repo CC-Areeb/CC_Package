@@ -11,7 +11,7 @@ class SMSController extends Controller
 {
     public function SMSindex()
     {
-        return view('cc-sms::sms-index');
+        return view('sms-index');
     }
 
     public function sendSMS(Request $request)
