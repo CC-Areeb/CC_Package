@@ -10,7 +10,7 @@ class EmailController extends Controller
 {
     public function index()
     {
-        return view('email-index');
+        return view('cc-email::email-index');
     }
 
     public function sendEmail()

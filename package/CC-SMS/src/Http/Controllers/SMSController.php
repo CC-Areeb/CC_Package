@@ -11,7 +11,7 @@ class SMSController extends Controller
 {
     public function SMSindex()
     {
-        return view('sms-index');
+        return view('cc-sms::sms-index');
     }
 
     public function sendSMS(Request $request)
@@ -27,7 +27,7 @@ class SMSController extends Controller
                     "mediaUrl" => ["https://demo.twilio.com/owl.png"]
                 ]
             );
-            return view('cc-sms::smsWelcome');
+            return view('cc-sms::sms-welcome');
         }catch (TwilioException $e) {
             return 'Oops, SMS was not sent.';
         }

@@ -28,8 +28,11 @@ class SmsCommand extends Command
      */
     public function handle()
     {
-        $this->AddSmsRoute();
+        dd(
+            __DIR__.'/../../resources/views/smsWelcome.blade.php'
+        );
         $this->AddSmsViews();
+        $this->AddSmsRoute();
         $this->AddSmsController();
     }
 
@@ -51,7 +54,7 @@ class SmsCommand extends Command
     public function AddSmsViews()
     {
         (new Filesystem)->ensureDirectoryExists(resource_path('views'));
-        copy(__DIR__.'/../../resources/views/sms-welcome.blade.php', resource_path('views/sms-welcome.blade.php'));
-        copy(__DIR__.'/../../resources/views/sms-index.blade.php', resource_path('views/sms-index.blade.php'));
+        copy(__DIR__.'/../../resources/views/smsWelcome.blade.php', resource_path('views/sms-welcome.blade.php'));
+        copy(__DIR__.'/../../resources/views/smsIndex.blade.php', resource_path('views/sms-index.blade.php'));
     }
 }

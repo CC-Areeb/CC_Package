@@ -27,10 +27,13 @@ class EmailCommand extends Command
      */
     public function handle()
     {
+        dd(
+            __DIR__.'/../../resources/views/emailIndex.blade.php'
+        );
+        $this->AddEmailViews();
         $this->AddEmailRoute();
         $this->AddEmailController();
         $this->AddMailaibleFiles();
-        $this->AddEmailViews();
     }
 
     // Routes
@@ -59,6 +62,6 @@ class EmailCommand extends Command
     {
         (new Filesystem)->ensureDirectoryExists(resource_path('views'));
         copy(__DIR__.'/../../resources/views/emailWelcome.blade.php', resource_path('views/email-welcome.blade.php'));
-        copy(__DIR__.'/../../resources/views/email-index.blade.php', resource_path('views/email-index.blade.php'));
+        copy(__DIR__.'/../../resources/views/emailIndex.blade.php', resource_path('views/email-index.blade.php'));
     }
 }
