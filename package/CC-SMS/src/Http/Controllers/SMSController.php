@@ -17,9 +17,9 @@ class SMSController extends Controller
     public function sendSMS(Request $request)
     {
         try {
-            $sender = env('TWILIO_SENDER');
-            $sid = env('TWILIO_ACCOUNT_SID');
-            $authToken = env('TWILIO_AUTH_TOKEN');
+            $sid = config('sms.sid', 'some_sid');
+            $sender = config('sms.sender', 'some_sender');
+            $authToken = config('sms.auth', 'some_token');
             $twilio = new Client($sid, $authToken);
             $twilio->messages->create($request->sms_receiver, [
                     "body" => $request->sms_message,
