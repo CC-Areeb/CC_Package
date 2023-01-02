@@ -206,6 +206,10 @@ TWILIO_SENDER=YOUR_TWILIO_PHONE_NUMBER_FROM_TWILIO
 ```
 For the Twilio template, I am using the form request method of Laravel as I cannot disclose my personal cell number.
 
+*Note*
+
+**To actually send an sms after resigistering your number, make sure to use the country code like for example in Pakistan we use `+92` otherwise the twilio cannot send sms.** 
+
 Sms controller
 ```
 public function sendSMS(Request $request)
