@@ -9,13 +9,7 @@ class EmailingServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-
-
-        dd(
-            __DIR__.'/../routes/email.php'
-        );
-
-        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes/email.php');
         $this->loadViewsFrom(__DIR__ . '/../resources/views/', 'cc-email');
         $this->publishes([
             __DIR__.'/../config/email.php' => config_path('email.php'),
