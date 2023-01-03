@@ -37,7 +37,7 @@ class EmailCommand extends Command
     public function AddEmailRoute()
     {
         (new Filesystem)->ensureDirectoryExists(base_path('routes'));
-        copy(__DIR__.'/../routes/web.php', base_path('routes/email.php'));
+        copy(__DIR__.'/../routes/email.php', base_path('routes/email.php'));
     }
 
     // Controllers
