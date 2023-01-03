@@ -38,7 +38,7 @@ class SMSController extends Controller
             );
             return 'SMS was sent';
         } catch (TwilioException $e) {
-            return 'Oops, SMS was not sent due to. ' . '<br /> <br />' . $e;
+            throw $e;
         }
     }
 
