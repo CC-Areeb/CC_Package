@@ -51,7 +51,8 @@
         #to,
         #subject,
         #sms_message,
-        #message {
+        #message
+        {
             width: 100%;
             padding: 12px 20px;
             margin: 8px 0;
@@ -84,6 +85,12 @@
             font-size: 20px;
             font-family: sans-serif;
         }
+
+        /* OTP option containers */
+        .otp-options
+        {
+            margin: 10px 0px; 
+        }
 </style>
 </head>
 
@@ -91,23 +98,7 @@
 <body>
     <div id="main_form_container" class="bg-success">
         <form action="{{ route('sendSMS') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
-            <div>
-                <div>
-                    <label for="sms_receiver" class="base_label">Phone number: </label>
-                </div>
-                <input type="text" name="sms_receiver" id="sms_receiver" placeholder="your country code then you phone number">
-            </div>
-
-
-            <div>
-                <div>
-                    <label for="sms_message" class="base_label">Your message: </label>
-                </div>
-                <textarea name="sms_message" id="sms_message" cols="60" rows="5">
-                </textarea>
-            </div>
-
-
+            {{-- click here to send sms --}}
             <div>
                 <input type="submit" value="Send Message" id="sms_send_btn">
             </div>
