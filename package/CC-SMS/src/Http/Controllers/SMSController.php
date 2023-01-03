@@ -3,7 +3,6 @@
 namespace CooperativeComputingSMS\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Client;
 

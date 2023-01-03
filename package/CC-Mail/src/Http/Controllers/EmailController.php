@@ -1,9 +1,9 @@
 <?php
 
-namespace CooperativeComputing\Controllers;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use CooperativeComputing\Mail\Emails as MailEmails;
+use App\Mail\Emails as MailEmails;
 use Illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
