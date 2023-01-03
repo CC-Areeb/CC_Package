@@ -12,12 +12,14 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
+            
             "CooperativeComputing\\": "package/CC-Mail/",
             "CooperativeComputing\\Console\\": "package/CC-Mail/src/Console/",
             "CooperativeComputing\\Services\\": "package/CC-Mail/src/",
             "CooperativeComputing\\Routes\\": "package/CC-Mail/src/routes/",
             "CooperativeComputing\\Controllers\\": "package/CC-Mail/src/Http/Controllers/",
             "CooperativeComputing\\Mail\\": "package/CC-Mail/src/Mail/",
+
             "CooperativeComputingSMS\\": "package/CC-SMS/",
             "CooperativeComputingSMS\\Console\\": "package/CC-SMS/src/Console/",
             "CooperativeComputingSMS\\Services\\": "package/CC-SMS/src/",
@@ -47,7 +49,10 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "providers": [
+                "CooperativeComputing\\Services\\EmailingServiceProvider",
+                "CooperativeComputingSMS\\Services\\SmsServiceProvider"
+            ]
         }
     },
     "config": {
