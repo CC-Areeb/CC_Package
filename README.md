@@ -138,7 +138,7 @@ public function build()
     return $this->from($this->validator['sender'])
                 ->subject($this->validator['subject'])
                 ->to($this->validator['to'])
-                ->attach(public_path('/img/1.jpg'))
+                ->attach(public_path('<single attachment>'))
                 ->markdown('email-welcome');
 }
 ```
@@ -148,9 +148,9 @@ public function build()
 public function sendEmail()
     {
         $attachments = [
-            public_path('/img/1.jpg'),
-            public_path('/img/2.jpg'),
-            public_path('/img/3.jpg'),
+            public_path('<attachment 1>'),
+            public_path('<attachment 2>'),
+            public_path('<attachment 3>'),
         ];
         $validator = [
             'sender' => 'sender@mail.com',
@@ -186,14 +186,17 @@ return $this->from($this->validator['sender'])
             ->to($this->validator['to'])
             ->cc($this->validator['people'])
             ->bcc($this->validator['private_people'])
-            ->attach(base_path('README.md'))
+            ->attach(base_path('<path of any file>'))
             ->markdown('email-welcome');
 ```
-+ `from` person who is sending the mail
-+ `subject` purpose of the email
-+ `to` the main recipient
-+ `cc` carbon copy for adding people publicly 
-+ `bcc` blind carbon copy for adding people privatly 
+
+| options | description |
+| ------ | ------ |
+| from | person who is sending the mail |
+| subject | purpose of the email |
+| to | the main recipient |
+| cc | carbon copy for adding people publicly |
+| bcc | blind carbon copy for adding people privatly |
 
 
 # Sending SMS
@@ -212,23 +215,37 @@ For the Twilio template, I am using the form request method of Laravel as I cann
 
 Sms controller
 ```
-public function sendSMS(Request $request)
+public function sendSMS()
 {
+    $otp = $this->generateOTP();
+
+    $request = (object) [
+        'sms_message' => 'Text message with OTP: '. $otp,
+        'sms_receiver' => '<The registered phone number(s)>',
+    ];
+
     try {
-        $sender = env('TWILIO_SENDER');
-        $sid = env('TWILIO_ACCOUNT_SID');
-        $authToken = env('TWILIO_AUTH_TOKEN');
+        $sid = config('sms.sid', 'some_sid');
+        $sender = config('sms.sender', 'some_sender');
+        $authToken = config('sms.auth', 'some_token');
         $twilio = new Client($sid, $authToken);
-        $twilio->messages->create($request->sms_receiver, [
+        $twilio->messages->create(
+            $request->sms_receiver,
+            [
                 "body" => $request->sms_message,
                 "from" => $sender,
                 "mediaUrl" => ["https://demo.twilio.com/owl.png"]
             ]
         );
-        return view('cc-sms::smsWelcome');
-    }catch (TwilioException $e) {
-        return 'Oops, SMS was not sent due to '. $e;
+        return 'SMS was sent';
+    } catch (TwilioException $e) {
+        throw $e;
     }
+}
+
+public function generateOTP()
+{
+    return random_int(0,99999);
 }
 ```
 
@@ -239,6 +256,12 @@ First argument takes in the recipient's cell number and the second argument is t
 + `body` this is the main body of your sms or the text you write to send
 + `from` this is the sender of the sms, for twilio you have to register your number
 + `mediaUrl` this is an optional field, we can send some media URLs with this
+
+| options | description |
+| ------ | ------ |
+| body | this is the main body of your sms or the text you write to send |
+| from | this is the sender of the sms, for twilio you have to register your number |
+| mediaUrl | this is an optional field, we can send some media URLs with this |
 
 More twilio examples with laravel
 
